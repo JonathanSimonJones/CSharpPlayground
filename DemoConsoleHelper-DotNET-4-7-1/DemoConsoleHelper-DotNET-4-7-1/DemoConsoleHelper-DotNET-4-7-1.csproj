@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Examples\Base\ExBase.cs" />
+    <Compile Include="Examples\ExDynamic.cs" />
+    <Compile Include="Examples\Interfaces\IHelperText.cs" />
+    <Compile Include="Examples\Interfaces\IRun.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
