@@ -1,0 +1,34 @@
+CodingStandardsNotes.txt
+
+Taken from: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions on 17 Dec 2018
+
+Naming Conventions
+	One statement per line
+	One declaration per line
+	Coninuation lines indented one tab (four spaces)
+	Add at least one line between method definitions and property definitions
+	Use parentheses to make clauses clearer
+
+Commenting Conventions
+	Place comment on seperate line
+	Begin comment with uppercase letter.
+	End comment with period
+	Have one space with comment delimiter and comment text
+	Do not use formatted blocks of asterisks around comments
+
+Language Guidelines
+	String
+		Use string interpolation to concat short strings
+			string str = $"{arr[0].toString()}, {arr2[1].val}";
+
+		To append strings in loops use stringbuilder object
+			var strBuilder = new StringBuilder();
+	
+	Implicitly typed local vars
+		Use implicit when type is obvious
+			var foo = "I am a string";
+			var clearlyInt = Convert.ToInt32("3");
+
+		Do not use var when type is not apparent, be explicit
+		Do not rely on var name to specify type (maybe don't add it to name in first place?)
+		Prefer use of dynamic
