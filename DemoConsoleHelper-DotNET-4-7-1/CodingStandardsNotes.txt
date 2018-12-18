@@ -3,6 +3,9 @@ CodingStandardsNotes.txt
 Taken from: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions on 17 Dec 2018
 Handy doc: https://github.com/ktaranov/naming-convention/blob/master/C%23%20Coding%20Standards%20and%20Naming%20Conventions.md
 
+Thoughts: Some of these are not given any justification, and seem more best practice than 
+			style. 
+
 Naming Conventions
 	One statement per line
 	One declaration per line
@@ -33,5 +36,176 @@ Language Guidelines
 		Do not use var when type is not apparent, be explicit
 		Do not rely on var name to specify type (maybe don't add it to name in first place?)
 		Prefer use of dynamic
+		Use implicit typing to determine the type in the loop variable, e.g Use var 
+		as the type definition
 
-		
+	Unsigned Data type
+		In general prefer the use of int over unsigned int as int is more common and 
+		easier to interact with other libraries
+
+	Arrays
+		Use concise syntax when initialising arrays on declation line
+			string[] someChars = {"x", "j", "p"};
+
+	Delegates
+		Use concise syntax to create instances of a delegate type
+			// Define delegate type
+			public delegate int SomeDel(int number);
+
+			// Define method with matching signature
+			public static int DelegateMethod(int num)
+			{
+				return num + 10;
+			}
+
+			// Preferred: Create an instance of a delegate using condensed syntax
+			SomeDel exDel = DelegateMethod;
+
+			// Full syntax
+			SomeDel exDel2 = new SomeDel(DelegateMethod);
+
+	try-catch and using Statments in Exception Handling
+		Use try-catch statements for exception handling
+			
+			var randObj = new ClassObj();
+			
+			try 
+			{
+				randObj.someMethod();
+			}
+			catch (specific exception type)
+			{
+				throw;
+			}
+
+		Simplify code by making use of the using statement to replace try-finally statment 
+		when the only block is a call to Dispose method
+			// This try-finally statement only calls Dispose in the finally block.
+			Font font1 = new Font("Arial", 10.0f);
+			try
+			{
+				byte charset = font1.GdiCharSet;
+			}
+			finally
+			{
+				if (font1 != null)
+				{
+					((IDisposable)font1).Dispose();
+				}
+			}
+
+
+			// You can do the same thing with a using statement.
+			using (Font font2 = new Font("Arial", 10.0f))
+			{
+				byte charset = font2.GdiCharSet;
+			}
+
+	&& and || Operators
+		To avoid exceptions and increase performance by skipping unnecessary comparisions, 
+		use && instead of & and || instead of | when comparing
+			Console.Write("Enter a dividend: ");
+			var dividend = Convert.ToInt32(Console.ReadLine());
+
+			Console.Write("Enter a divisor: ");
+			var divisor = Convert.ToInt32(Console.ReadLine());
+
+			// If the divisor is 0, the second clause in the following condition
+			// causes a run-time error. The && operator short circuits when the
+			// first expression is false. That is, it does not evaluate the
+			// second expression. The & operator evaluates both, and causes 
+			// a run-time error when divisor is 0.
+			if ((divisor != 0) && (dividend / divisor > 0))
+			{
+				Console.WriteLine("Quotient: {0}", dividend / divisor);
+			}
+			else
+			{
+				Console.WriteLine("Attempted division by 0 ends up here.");
+			}
+
+		New Operator
+			Use the concise form of object instantiation when the type is implicit
+				// Concise form
+				var instance = new ExClass();
+
+				// Long form
+				ExClass instance2 = new ExClass();
+
+			Use object initializers to simplify object creation
+				// Object initializer
+				// It uses properties inside the curly braces
+				var instance3 = new ExampleClass {Foo = "foo", Bar = 5};
+
+		Event Handling
+			Use lamda expressions if you are defining and event handler that is not planned 
+			to be removed
+				// Using lamda example
+				public Foo()
+				{
+					// Use lamda to define event handler
+					this.Click += (s, e) => 
+						{
+							MessageBox.Show(
+								((MouseEventArgs)e).Location.ToString());
+						}
+				}
+
+				// Old style
+				public Foo()
+				{
+					this.Click += new EventHandler(Foo_Click);
+				}
+
+				void Foo_Click(object sender, EventArgs e)
+				{
+					MessageBox.Show(((MouseEventArgs)e).Location.ToString());
+				}
+
+		Static members
+			Call static members by using ClassName.StaticMember. Makes code more readable
+			as the static access is clear. No not qualify a static member defined in a base 
+			class with the name of a derived class as the code may compile with the derived
+			class qualifer but if you add a static member with the same name to the derived 
+			class the code may break. 
+
+		LINQ Queries
+			Use meaningful names for query variables. 
+				var londonCustomers = from cust in customers
+									  where cust.City == "London"
+									  select cust.Name;
+
+			Use implicit typing in the declaration of query vars and range vars
+				See above example
+
+			Align query clause under form clause
+				See above example
+
+			Use aliases to make usre that property names of anon types are correctly 
+			capitalized in Pascal casing
+				var localDistributors =
+					from customer in customers
+					join distributor in distributors on customer.City equals distributor.City
+					select new { Customer = customer, Distributor = distributor };
+
+			Rename properties so they are not ambiguous
+				// In example CustomerName was originally Name and DistributorID was
+				// ID
+				var localDistributors2 =
+					from cust in customers
+					join dist in distributors on cust.City equals dist.City
+					select new { CustomerName = cust.Name, DistributorID = dist.ID };
+
+			Use where clause before other query clauses as then it operates on a filtered
+			set of data
+				var seattleCustomers2 = from cust in customers
+										where cust.City == "Seattle"
+										orderby cust.Name
+										select cust;
+
+			Use multiple from clauses instead of a join clause to access inner collection. 
+				// Use a compound from to access the inner sequence within each element.
+				var scoreQuery = from student in students
+								 from score in student.Scores
+								 where score > 90
+								 select new { Last = student.LastName, score };
