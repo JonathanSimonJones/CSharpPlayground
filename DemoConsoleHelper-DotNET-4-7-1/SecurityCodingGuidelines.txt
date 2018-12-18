@@ -1,0 +1,64 @@
+SecurityCodingGuidelines.txt
+2018/12/18
+
+Taken from: https://docs.microsoft.com/en-us/dotnet/standard/security/secure-coding-guidelines
+
+Secure coding guidelines
+	.Net enforced permissions and other enforcement code should be used to erect barriers to
+	stop malicious code.
+
+	Strike a balance between security and usability using trusted code.
+
+	Securing resource access
+		Limit the access that code has to resources, especially when using or invoking code
+		of an unknown origin. 
+			Do not use Code Access Security (CAS)
+			Do not use partial trusted code
+			Do not use the AllowPartiallyTrustedCaller arrtibute (APTCA)
+			Do not use .NET Remoting
+			Do not use Distributed Component Object Model (DCOM)
+			Do not use binary formatters
+
+		Code Access Security and Security-Transparent Code are not suported as a security
+		boundary with partially trusted code. We advise against loading and executing code
+		of unknown origins without putting alternative security measures in place. These
+		are:
+			Virtualization
+			AppContainers
+			Operating system (OS) users and permissions
+			Hyper-V containers
+
+	Security-neutral code
+		Security-neutral code does nothing explicit with the security system. It runs with 
+		the permissions it receives. 
+		Security-neutral code still takes advantage of the security technologies in .NET.
+
+		Some security-neutral libraries that have permissions to use elevated functionality 
+		(e.g. use files or call unmanaged code). If some other code uses this functionality
+		and does not have the same permissions it will not run as expected. A 
+		SecurityException will appear by the calling code as a result of the code access
+		security stack walk.
+
+	Application code that isn't a reusable component
+		Code access security might stop malicious code from accessing resources, such code
+		could still read values of your fields or properties that may contain sensitive data.
+
+		If your code accepts user input from the Internet or other unreliable sources, be 
+		carful about malicious input. Sanitize input.
+
+	Managed wrapper to native code implementation
+		Callers of unmanaged code must  have unmanaged code rights. Under default policy, 
+		this means that code downloaded from an intranet or the Internet won't work with
+		the wrapper. 
+
+		Only give the wrapper libary unmanaged code rights. If the unmanaged code exposes no 
+		resources and the implementation is likewise safe, the wrapper only needs to assert
+		it's rights, which enables anything using the wrappers provided interface to call 
+		through it. However in the case of when resources are involved the following 
+		statments in the next section should be followed. 
+
+	Library code that exposes protected resources
+		Wherever you expose a resource your code must first demand the permission appropriate
+		to the resource (this means perform a security check) and then typically assert its
+		rights to perform the actual operation. 
+

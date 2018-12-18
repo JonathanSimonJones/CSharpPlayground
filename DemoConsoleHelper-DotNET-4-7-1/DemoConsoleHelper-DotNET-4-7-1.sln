@@ -9,6 +9,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 	ProjectSection(SolutionItems) = preProject
 		CodingStandardsNotes.txt = CodingStandardsNotes.txt
 		..\README.md = ..\README.md
+		SecurityCodingGuidelines.txt = SecurityCodingGuidelines.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{D10E8936-B597-4B48-BFA7-5A87081F7E4E}"
+	ProjectSection(SolutionItems) = preProject
+		SecurityCodingGuidelines.txt = SecurityCodingGuidelines.txt
 	EndProjectSection
 EndProject
 Global
@@ -24,6 +30,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D10E8936-B597-4B48-BFA7-5A87081F7E4E} = {E3D4798D-FA53-4225-9D3A-B6029205D2FD}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {31F00EFD-0C3A-4928-B1DD-48348B64CEE6}
