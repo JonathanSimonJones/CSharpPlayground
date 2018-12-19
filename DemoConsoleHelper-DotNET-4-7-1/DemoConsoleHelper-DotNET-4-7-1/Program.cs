@@ -18,7 +18,8 @@ namespace DemoConsoleHelper_DotNET_4_7_1
             Console.WriteLine("Hello World!");
 
             ExBase example = new ExDynamic();
-            example.Run();
+            //example.Run();
+            Console.Write(example.HelperText);
 
             // Stop immediate termination
             Console.ReadKey();
