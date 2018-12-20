@@ -26,6 +26,7 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
  Dynamic only exist at compile time, at run time variables of type dynamic are compiled into variables of type object.
 "; 
             HelperText = helperText;
+
         }
 
         public override string HelperText
@@ -34,15 +35,19 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
             protected set { base.m_helperText = value; }
         }
 
-
-        public override void Run()
+        public override string ConsoleOutput
         {
-            System.Console.WriteLine(this.HelperText);
-            System.Console.WriteLine(m_dyn.GetType());
-            System.Console.WriteLine(m_obj.GetType());
+            get { return base.m_consoleOutput.ToString(); }
+        }
+
+
+        protected override void Run()
+        {
+            base.m_consoleOutput.AppendLine(m_dyn.GetType().ToString());
+            base.m_consoleOutput.AppendLine(m_obj.GetType().ToString());
 
             // Will compile as dynamic type checking is done at run time
-            m_dyn = m_dyn + 3;  
+            m_dyn = m_dyn + 3;
 
             // Will stop compilation as object types are checked at compile time
             // and m_obj is of type object
