@@ -1,0 +1,1 @@
+is loose coupling more important than enforcement of interface?

@@ -7,14 +7,14 @@ using DemoConsoleHelper_DotNET_4_7_1.Examples.Interfaces;
 
 namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Base
 {
-    abstract class ExBase: IHelperText
+    abstract class ExBase: IHelperText, IConsoleText
     {
         protected string m_helperText;
-        protected StringBuilder m_consoleOutput;
+        protected StringBuilder m_consoleTextBuilder;
 
         protected ExBase()
         {
-            m_consoleOutput = new StringBuilder();
+            m_consoleTextBuilder = new StringBuilder();
 
             Run();  // Is called by more derived class to run example. 
         }
@@ -25,9 +25,11 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Base
             protected set;
         }
 
-        public abstract string ConsoleOutput
+        protected abstract StringBuilder ConsoleTextBuilder { get; }
+
+        public string ConsoleText
         {
-            get;
+            get { return ConsoleTextBuilder.ToString(); }
         }
 
         protected abstract void Run();

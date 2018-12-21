@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -11,7 +12,7 @@ using DemoConsoleHelper_DotNET_4_7_1.Examples.Interfaces;
 namespace DemoConsoleHelper_DotNET_4_7_1.Examples
 {
 
-    class ExDynamic : ExBase
+    sealed class ExDynamic : ExBase
     {
         private dynamic m_dyn = 3;
         private object m_obj = 4;
@@ -35,16 +36,16 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
             protected set { base.m_helperText = value; }
         }
 
-        public override string ConsoleOutput
+        protected override StringBuilder ConsoleTextBuilder
         {
-            get { return base.m_consoleOutput.ToString(); }
+            get { return base.m_consoleTextBuilder; }
         }
 
 
         protected override void Run()
         {
-            base.m_consoleOutput.AppendLine(m_dyn.GetType().ToString());
-            base.m_consoleOutput.AppendLine(m_obj.GetType().ToString());
+            ConsoleTextBuilder.AppendLine(m_dyn.GetType().ToString());
+            ConsoleTextBuilder.AppendLine(m_obj.GetType().ToString());
 
             // Will compile as dynamic type checking is done at run time
             m_dyn = m_dyn + 3;
