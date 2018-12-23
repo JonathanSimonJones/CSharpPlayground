@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 // Project namespaces
 using DemoConsoleHelper_DotNET_4_7_1.Examples;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Base;
+using DemoConsoleHelper_DotNET_4_7_1.Examples.Types;
 
 namespace DemoConsoleHelper_DotNET_4_7_1
 {
@@ -17,7 +18,9 @@ namespace DemoConsoleHelper_DotNET_4_7_1
         {
             Console.WriteLine("Hello World!");
 
-            ExBase example = new ExDynamic();
+            dynamic Factory = new ExFactory();
+
+            ExBase example = Factory.ExDynamic();
             Console.Write(example.ConsoleText);
 
             // Stop immediate termination

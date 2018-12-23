@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Base;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Interfaces;
 
-namespace DemoConsoleHelper_DotNET_4_7_1.Examples
+namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Types
 {
 
     sealed class ExDynamic : ExBase
@@ -33,11 +33,11 @@ time
 
 Dynamic behaves like object in most circumstances.
 
-Operations that contain expressions of type dynamic are not resolved or type checked by the 
-complier.
+Operations that contain expressions of type dynamic are not resolved or type checked 
+by the complier.
 
-Dynamic only exist at compile time, at run time variables of type dynamic are compiled into 
-variables of type object.
+Dynamic only exist at compile time, at run time variables of type dynamic are compiled 
+into  variables of type object.
 
 In declarations it can appear as a type of: a property, field, indexer, parameter, return 
 value, local variable, or type constraint. 

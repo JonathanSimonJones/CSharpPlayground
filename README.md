@@ -20,3 +20,4 @@ Please see Example/Base/ExBase.cs for use of protected keyword.
 Please see Example/Interfaces/IHelperText.cs for interface property.  
 Please see Example/Interfaces/IRun.cs for interface method. 
 Please see Example/Interfaces for best practice on splitting interfaces based upon functionality.  
+Please see Example/ExFactory for demonstration of the factory design pattern. 
