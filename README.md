@@ -6,9 +6,7 @@ Used to demo C Sharp understanding, awareness and best practices.
 - Microsoft Visual Studio Community 2017 (Version 15.9.4)
 
 ## Work: 
-- [ ] Finish notes on coding standards and best practices. 
-- Write examples of 
-	- [ ] dynamic type
+Please see: https://trello.com/b/jBAZE6YJ/c-demonstrations
 
 ## Example references: 
 Please see Example/Base/ExBase.cs for a evidence of enforment of interface.  
@@ -20,5 +18,5 @@ Please see Example/Base/ExBase.cs for use of protected keyword.
 Please see Example/Interfaces/IHelperText.cs for interface property.  
 Please see Example/Interfaces/IRun.cs for interface method. 
 Please see Example/Interfaces for best practice on splitting interfaces based upon functionality.  
-Please see Example/ExFactory for demonstration of the factory design pattern. 
+Please see Example/ExFactory for demonstration of the factory design pattern.  
 Please see Example/ExFactory for demonstration of the singleton design pattern. 
