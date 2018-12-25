@@ -12,7 +12,7 @@ using DemoConsoleHelper_DotNET_4_7_1.Examples.Interfaces;
 namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Types
 {
 
-    sealed class ExDynamic : ExBase
+    public sealed class ExDynamic : ExBase
     {
         // PRIVATE MEMBER VARIABLES START
 

@@ -7,7 +7,7 @@ using DemoConsoleHelper_DotNET_4_7_1.Examples.Interfaces;
 
 namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Base
 {
-    abstract class ExBase: IHelperText, IConsoleText
+    public abstract class ExBase: IHelperText, IConsoleText
     {
         protected string m_helperText;
         protected StringBuilder m_consoleTextBuilder;

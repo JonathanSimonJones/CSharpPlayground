@@ -18,7 +18,7 @@ namespace DemoConsoleHelper_DotNET_4_7_1
         {
             Console.WriteLine("Hello World!");
 
-            dynamic Factory = new ExFactory();
+            dynamic Factory = ExFactory.Instance;
 
             ExBase example = Factory.ExDynamic();
             Console.Write(example.ConsoleText);
