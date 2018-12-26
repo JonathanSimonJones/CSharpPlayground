@@ -1,1 +1,6 @@
+Instantiate - Instantiating a class means to create a new instance of the class. 
+				The process of creating an object, typically using the new keyword
+				https://stackoverflow.com/questions/32290879/meanings-of-declaring-instantiating-initializing-and-assigning-an-object
+
+
 is loose coupling more important than enforcement of interface?
