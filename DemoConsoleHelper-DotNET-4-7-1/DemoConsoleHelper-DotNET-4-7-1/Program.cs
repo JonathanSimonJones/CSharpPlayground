@@ -20,7 +20,7 @@ namespace DemoConsoleHelper_DotNET_4_7_1
 
             dynamic Factory = ExFactory.Instance;
 
-            ExBase example = Factory.ExDynamic();
+            ExBase example = Factory.ExDelegate();
             Console.Write(example.ConsoleText);
 
             // Stop immediate termination

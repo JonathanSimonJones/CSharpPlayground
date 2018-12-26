@@ -30,10 +30,9 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
         {
         }
 
-        public ExDynamic ExDynamic()
-        {
-            return new ExDynamic();
-        }
+        public ExDynamic ExDynamic() => new ExDynamic();
+
+        public ExDelegates ExDelegate() => new ExDelegates();
 
     }
 }

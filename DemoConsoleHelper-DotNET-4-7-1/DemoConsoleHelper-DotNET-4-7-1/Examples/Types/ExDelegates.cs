@@ -39,8 +39,9 @@ Delegates
         // PROTECTED INTERFACE START
 
         // Called in base class constructor
-        protected override void Run()   
+        protected override void Run()
         {
+            ConsoleTextBuilder.AppendLine("Delegates Example");
         }
 
         protected override StringBuilder ConsoleTextBuilder
