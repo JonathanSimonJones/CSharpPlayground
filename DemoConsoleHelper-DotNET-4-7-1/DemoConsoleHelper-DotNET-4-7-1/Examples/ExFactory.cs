@@ -32,7 +32,7 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
 
         public ExDynamic ExDynamic() => new ExDynamic();
 
-        public ExDelegates ExDelegate() => new ExDelegates();
+        public ExDelegates ExDelegates() => new ExDelegates();
 
     }
 }
