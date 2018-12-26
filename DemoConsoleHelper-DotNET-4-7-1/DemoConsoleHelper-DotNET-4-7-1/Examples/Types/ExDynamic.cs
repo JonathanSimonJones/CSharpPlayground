@@ -19,6 +19,8 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Types
         private dynamic m_dyn = 3;
         private object m_obj = 4;
         private static dynamic m_field;
+        private string m_helperText;
+        private StringBuilder m_consoleTextBuilder = new StringBuilder();
 
         // PRIVATE MEMBER VARIABLES END
 
@@ -27,6 +29,7 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Types
         public ExDynamic()
         {
             string helperText = @"
+Dynamic
 Reference type
 Enables operations to bypass compile-time type checking and instead resolve type at run 
 time
@@ -132,19 +135,24 @@ Where type serves as a value, dynamic can be used. e.g. someVar is dynamic.
 
         public override string HelperText
         {
-            get { return base.m_helperText; }
-            protected set { base.m_helperText = value; }
+            get => m_helperText; 
+            protected set => m_helperText = value;
         }
 
         protected override StringBuilder ConsoleTextBuilder
         {
-            get { return base.m_consoleTextBuilder; }
+            get => m_consoleTextBuilder; 
+        }
+
+        public override string ConsoleText
+        {
+            get => m_consoleTextBuilder.ToString(); 
         }
 
         private dynamic ExProperty
         {
-            get { return m_field; }
-            set { m_field = value; }
+            get => m_field;
+            set => m_field = value;
         }
 
         // PROPERTIES END

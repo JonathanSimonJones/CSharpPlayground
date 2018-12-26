@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Examples\Base\ExBase.cs" />
     <Compile Include="Examples\ExFactory.cs" />
+    <Compile Include="Examples\Types\ExDelegates.cs" />
     <Compile Include="Examples\Types\ExDynamic.cs" />
     <Compile Include="Examples\Interfaces\IHelperText.cs" />
     <Compile Include="Examples\Interfaces\IConsoleText.cs" />

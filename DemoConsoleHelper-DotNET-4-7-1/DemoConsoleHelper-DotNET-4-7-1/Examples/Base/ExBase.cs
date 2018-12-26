@@ -9,15 +9,7 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Base
 {
     public abstract class ExBase: IHelperText, IConsoleText
     {
-        protected string m_helperText;
-        protected StringBuilder m_consoleTextBuilder;
-
-        protected ExBase()
-        {
-            m_consoleTextBuilder = new StringBuilder();
-
-            Run();  // Is called by more derived class to run example. 
-        }
+        // PUBLIC INTERFACE START
 
         public abstract string HelperText
         {
@@ -25,13 +17,42 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Base
             protected set;
         }
 
-        protected abstract StringBuilder ConsoleTextBuilder { get; }
+        public abstract string ConsoleText { get; }
 
-        public string ConsoleText
+        // PUBLIC INTERFACE END
+
+
+
+
+
+
+
+
+        // PROTECTED INTERFACE START
+
+        protected ExBase()
         {
-            get { return ConsoleTextBuilder.ToString(); }
+            Run();  // Run is defined in more derived class, but called here
         }
 
         protected abstract void Run();
+
+        protected abstract StringBuilder ConsoleTextBuilder { get; }
+
+        // PROTECTED INTERFACE END
+
+
+
+
+
+
+
+
+
+        // PRIVATE MEMBER VARIABLES START
+
+        //      Define member variables in derived class, makes for looser coupling
+
+        // PRIVATE MEMBER VARIABLES END
     }
 }
