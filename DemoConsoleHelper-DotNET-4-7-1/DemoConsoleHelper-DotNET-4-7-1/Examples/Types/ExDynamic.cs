@@ -11,20 +11,12 @@ using DemoConsoleHelper_DotNET_4_7_1.Examples.Interfaces;
 
 namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Types
 {
-
+    /// <summary>
+    /// Demonstrates functionality and use of dynamic. 
+    /// </summary>
     public sealed class ExDynamic : ExBase
     {
-        // PRIVATE MEMBER VARIABLES START
-
-        private dynamic m_dyn = 3;
-        private object m_obj = 4;
-        private static dynamic m_field;
-        private string m_helperText;
-        private StringBuilder m_consoleTextBuilder = new StringBuilder();
-
-        // PRIVATE MEMBER VARIABLES END
-
-        // INITIALISER START
+        // PUBLIC INTERFACE START
 
         public ExDynamic()
         {
@@ -51,9 +43,27 @@ Where type serves as a value, dynamic can be used. e.g. someVar is dynamic.
 
         }
 
-        // INITIALISER END 
 
-        // METHODS START
+        public override string HelperText
+        {
+            get => m_helperText;
+            protected set => m_helperText = value;
+        }
+
+
+        public override string ConsoleText
+        {
+            get => m_consoleTextBuilder.ToString();
+        }
+
+
+        // PUBLIC INTERFACE END 
+
+
+
+
+
+        // PROTECTED INTERFACE START
 
         protected override void Run()
         {
@@ -110,6 +120,34 @@ Where type serves as a value, dynamic can be used. e.g. someVar is dynamic.
             // run time type of a piece of data.
         }
 
+        protected override StringBuilder ConsoleTextBuilder
+        {
+            get => m_consoleTextBuilder;
+        }
+
+        // PROTECTED INTERFACE END 
+
+
+
+
+
+
+
+
+        // PRIVATE MEMBER VARIABLES START
+
+        private dynamic m_dyn = 3;
+        private object m_obj = 4;
+        private static dynamic m_field;
+        private string m_helperText;
+        private StringBuilder m_consoleTextBuilder = new StringBuilder();
+
+        private dynamic ExProperty
+        {
+            get => m_field;
+            set => m_field = value;
+        }
+
         private dynamic ExMethod(dynamic dynamicParameter)
         {
             // Can be set to anything
@@ -129,33 +167,7 @@ Where type serves as a value, dynamic can be used. e.g. someVar is dynamic.
             }
         }
 
-        // METHODS END 
-
-        // PROPERTIES START 
-
-        public override string HelperText
-        {
-            get => m_helperText; 
-            protected set => m_helperText = value;
-        }
-
-        protected override StringBuilder ConsoleTextBuilder
-        {
-            get => m_consoleTextBuilder; 
-        }
-
-        public override string ConsoleText
-        {
-            get => m_consoleTextBuilder.ToString(); 
-        }
-
-        private dynamic ExProperty
-        {
-            get => m_field;
-            set => m_field = value;
-        }
-
-        // PROPERTIES END
+        // PRIVATE MEMBER VARIABLES END
 
     }
 

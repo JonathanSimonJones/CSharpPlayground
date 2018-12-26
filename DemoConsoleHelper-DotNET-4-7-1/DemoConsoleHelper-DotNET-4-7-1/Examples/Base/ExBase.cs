@@ -44,8 +44,11 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Base
 
 
         /// <summary>
-        /// Notible feature - Calls <c>Run()</c> for more derived class. 
+        /// Constructs example objects. Implicitly calls <c cref="Run()">Run()</c>.
         /// </summary>
+        /// <remarks>
+        /// Implicity calls <c cref="Run()">Run()</c> for more derived class.  
+        /// </remarks>
         protected ExBase()
         {
             Run();

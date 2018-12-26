@@ -12,6 +12,12 @@ using DemoConsoleHelper_DotNET_4_7_1.Examples.Types;
 
 namespace DemoConsoleHelper_DotNET_4_7_1
 {
+    /// <summary>
+    /// Entry point. Runs examples of C# usage.
+    /// </summary>
+    /// <remarks>
+    /// Requires System.Console at the moment.
+    /// </remarks>
     class Program
     {
         static void Main(string[] args)
@@ -20,7 +26,7 @@ namespace DemoConsoleHelper_DotNET_4_7_1
 
             dynamic Factory = ExFactory.Instance;
 
-            ExBase example = Factory.ExDelegates();
+            ExBase example = Factory.ExDynamic();
             Console.Write(example.ConsoleText);
 
             // Stop immediate termination
