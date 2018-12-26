@@ -7,16 +7,28 @@ using DemoConsoleHelper_DotNET_4_7_1.Examples.Interfaces;
 
 namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Base
 {
+
+    /// <summary>
+    /// An abstract base class for C# code examples. Used to enforce interface.
+    /// </summary>
     public abstract class ExBase: IHelperText, IConsoleText
     {
         // PUBLIC INTERFACE START
 
+
+        /// <summary>
+        /// Displays a helpful message about the example in question.
+        /// </summary>
         public abstract string HelperText
         {
             get;
             protected set;
         }
 
+
+        /// <summary>
+        /// Holds content to be displayed to a terminal console.
+        /// </summary>
         public abstract string ConsoleText { get; }
 
         // PUBLIC INTERFACE END
@@ -30,13 +42,24 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Base
 
         // PROTECTED INTERFACE START
 
+
+        /// <summary>
+        /// Notible feature - Calls <c>Run()</c> for more derived class. 
+        /// </summary>
         protected ExBase()
         {
-            Run();  // Run is defined in more derived class, but called here
+            Run();
         }
 
+        /// <summary>
+        /// Holds the example code to be run. Where most of the work happens.
+        /// </summary>
         protected abstract void Run();
 
+
+        /// <summary>
+        /// Interface to object that is used to collect any text for a console/terminal. 
+        /// </summary>
         protected abstract StringBuilder ConsoleTextBuilder { get; }
 
         // PROTECTED INTERFACE END
