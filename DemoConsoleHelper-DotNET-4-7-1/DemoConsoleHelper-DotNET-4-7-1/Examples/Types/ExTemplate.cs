@@ -8,9 +8,9 @@ using DemoConsoleHelper_DotNET_4_7_1.Examples.Base;
 namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Types
 {
     /// <summary>
-    /// Demonstrates use of Delegates
+    /// SOLELY USED AS A TEMPLATE, NOT INTENDED AS AN EXAMPLE
     /// </summary>
-    public sealed class ExDelegates : ExBase
+    public sealed class ExTemplate : ExBase
     {
         // PUBLIC INTERFACE START
 
@@ -21,7 +21,7 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Types
         /// <remarks>
         /// Where <c cref="HelperText">HelperText</c> is set.
         /// </remarks>
-        public ExDelegates()
+        public ExTemplate()
         {
             string helperText = @"
 Example
