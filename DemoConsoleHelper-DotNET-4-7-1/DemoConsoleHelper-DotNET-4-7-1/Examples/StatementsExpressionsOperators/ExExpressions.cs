@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Base;
 
 
-//! CHNAGE NAMESPACE
-namespace DemoConsoleHelper_DotNET_4_7_1.Examples
+namespace DemoConsoleHelper_DotNET_4_7_1.Examples.StatementsExpressionsOperators
 {
     /// <summary>
-    /// SOLELY USED AS A TEMPLATE, NOT INTENDED AS AN EXAMPLE
+    /// 
     /// </summary>
-    public sealed class ExTemplate : ExBase
+    public sealed class ExExpressions : ExBase
     {
         // PUBLIC INTERFACE START
 
@@ -23,10 +22,12 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
         /// <remarks>
         /// Where <c cref="HelperText">HelperText</c> is set.
         /// </remarks>
-        public ExTemplate()
+        public ExExpressions()
         {
             string helperText = @"
-Example
+Expressions
+Something which evaluates to a value.
+
 ";
             HelperText = helperText;
         }
@@ -91,10 +92,8 @@ Example
 
 
 
-        // PRIVATE INTERFACE START
 
 
-        // PRIVATE INTERFACE END
 
 
 

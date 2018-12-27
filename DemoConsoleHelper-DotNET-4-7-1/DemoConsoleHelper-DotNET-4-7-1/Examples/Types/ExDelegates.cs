@@ -485,7 +485,14 @@ comparision is allowed, but will return false at run time.
                                           "comparison returns false.");
         }
 
-
+        /// <summary>
+        /// Demonstration of a property providing access to a delegate
+        /// </summary>
+        private _ProcessTwoInts ProcessTwoIntsDelegateProperty
+        {
+            get => m_processTwoIntsDelegate;
+            set => m_processTwoIntsDelegate = value;
+        }
 
         // PRIVATE INTERFACE END
 
@@ -499,15 +506,6 @@ comparision is allowed, but will return false at run time.
         private StringBuilder m_consoleTextBuilder = new StringBuilder();
 
         private _ProcessTwoInts m_processTwoIntsDelegate;
-
-        /// <summary>
-        /// Demonstration of a property providing access to a delegate
-        /// </summary>
-        private _ProcessTwoInts ProcessTwoIntsDelegateProperty
-        {
-            get => m_processTwoIntsDelegate;
-            set => m_processTwoIntsDelegate = value;
-        }
 
         // MEMBER VARIABLES END
 
