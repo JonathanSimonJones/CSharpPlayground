@@ -122,6 +122,9 @@ or asynchronously by using .BeginInvoke and .EndInvoke methods.
                                           "passing in 10 and 12: " +
                                           _sumMinusFiveDelegateInstantiatedUsingAnonymousFunction(10, 12)
                                               .ToString());
+
+            ConsoleTextBuilder.AppendLine(" ");
+            _MulticasetDelegateExample();
         }
 
         /// <summary>
@@ -195,21 +198,85 @@ or asynchronously by using .BeginInvoke and .EndInvoke methods.
 
         private delegate string _TakesStringReturnsString(string text);
 
-        private static string _ReturnTextPassed(string text) => text;
+        
 
-        private string _AddToConsoleText(string text)
+        private static string _AppendFooToMessage(string text)
         {
-            ConsoleTextBuilder.AppendLine(text);
-            return "Successfully added to console.";
+            return text + " foo";
         }
 
-        private static string _RepeatTextPassed(string text) => text + " " + text;
+        private class MethodsForMulticastDelegate
+        {
+            public string ReturnTextPassed(string text) => text;
+            public string RepeatTextPassed(string text) => text + " " + text;
+        }
 
-        private _TakesStringReturnsString _ReturnMessageDelegate = _ReturnTextPassed;
+        private delegate void _TakesRefString(ref string text);
+
+        private static void _DemoInnerCall1(ref string messageWithOutAppend)
+        {
+            messageWithOutAppend += " first append,";
+        }
+
+        private static void _DemoInnerCall2(ref string messageWithOutAppend)
+        {
+            messageWithOutAppend += " second append,";
+        }
+
+        private static void _DemoInnerCall3(ref string messageWithOutAppend)
+        {
+            messageWithOutAppend += " last append.";
+        }
+
+
+        private void _MulticasetDelegateExample()
+        {
+            _TakesStringReturnsString _AppendFooToMessageDelegate = _AppendFooToMessage;
+            ConsoleTextBuilder.AppendLine("Result of calling _AppendFooToMessageDelegate " +
+                                          "passing in bar: " +
+                                          _AppendFooToMessageDelegate("bar"));
+
+            MethodsForMulticastDelegate multicastObj = new MethodsForMulticastDelegate();
+
+            _TakesStringReturnsString _ReturnTextPassedDelegate = 
+                                            multicastObj.ReturnTextPassed;
+
+            ConsoleTextBuilder.AppendLine("Result of calling _ReturnTextPassedDelegate " +
+                                          "passing in baz: " +
+                                          _ReturnTextPassedDelegate("baz"));
+
+            _TakesStringReturnsString _RepeatTextPassedDelegate =
+                multicastObj.RepeatTextPassed;
+
+            ConsoleTextBuilder.AppendLine("Result of calling _RepeatTextPassedDelegate " +
+                                          "passing in faz: " +
+                                          _RepeatTextPassedDelegate("faz"));
+
+            _TakesStringReturnsString _AllThreeStringDelegates = _ReturnTextPassedDelegate +
+                                                                 _RepeatTextPassedDelegate +
+                                                                 _AppendFooToMessageDelegate;
+
+            ConsoleTextBuilder.AppendLine("Result of calling _AllThreeStringDelegates " +
+                                          "passing in check: " +
+                                          _AllThreeStringDelegates("check"));
+
+            _TakesRefString _DemoInnerCall1Del = _DemoInnerCall1;
+            _TakesRefString _DemoInnerCall1De2 = _DemoInnerCall2;
+            _TakesRefString _DemoInnerCall1De3 = _DemoInnerCall3;
+
+            _TakesRefString _DemoMulticast = _DemoInnerCall1Del +
+                                             _DemoInnerCall1De2 +
+                                             _DemoInnerCall1De3;
+
+            string initialText = "Initial,";
+
+            _DemoMulticast(ref initialText);
+
+            ConsoleTextBuilder.AppendLine("Result of calling _DemoMulticast " +
+                                          "passing in Initial: " + initialText);
+        }
 
         // PRIVATE INTERFACE END
-
-
 
 
 
