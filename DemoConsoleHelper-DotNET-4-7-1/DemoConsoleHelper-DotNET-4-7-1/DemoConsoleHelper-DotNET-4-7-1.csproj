@@ -56,7 +56,8 @@
   <ItemGroup>
     <Compile Include="Examples\Base\ExBase.cs" />
     <Compile Include="Examples\ExFactory.cs" />
-    <Compile Include="Examples\Types\ExTemplate.cs" />
+    <Compile Include="Examples\StatementsExpressionsOperators\AnonymousFunctions\ExAnonymousFunctions.cs" />
+    <Compile Include="Examples\ExTemplate.cs" />
     <Compile Include="Examples\Types\ExDelegates.cs" />
     <Compile Include="Examples\Types\ExDynamic.cs" />
     <Compile Include="Examples\Interfaces\IHelperText.cs" />
@@ -68,8 +69,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Examples\Statements_Expressions_Operators\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

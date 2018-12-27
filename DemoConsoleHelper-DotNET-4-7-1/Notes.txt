@@ -4,3 +4,8 @@ Instantiate - Instantiating a class means to create a new instance of the class.
 
 
 is loose coupling more important than enforcement of interface?
+
+Statements/Expressions/Operators
+	An anonymous function is an 'inline' statement or expression that can be used wherever
+	a delegate type is expected. You can use it to initialise a named delegate or pass
+	it instead of a named delegate type as a method parameter. 

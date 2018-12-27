@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Base;
 
-namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Types
+
+namespace DemoConsoleHelper_DotNET_4_7_1.Examples.StatementsExpressionsOperators.AnonymousFunctions
 {
     /// <summary>
-    /// SOLELY USED AS A TEMPLATE, NOT INTENDED AS AN EXAMPLE
+    /// Holds the examples on the use of anonymous functions.
     /// </summary>
-    public sealed class ExTemplate : ExBase
+    public sealed class ExAnonymousFunctions : ExBase
     {
         // PUBLIC INTERFACE START
 
@@ -21,10 +18,15 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Types
         /// <remarks>
         /// Where <c cref="HelperText">HelperText</c> is set.
         /// </remarks>
-        public ExTemplate()
+        public ExAnonymousFunctions()
         {
             string helperText = @"
-Example
+Anonymous Functions
+Lamda Expressions, Anonymous Expressions
+
+An anonymous function is an 'inline' statement or expression that can be used wherever
+a delegate type is expected. You can use it to initialise a named delegate or pass
+it instead of a named delegate type as a method parameter. 
 ";
             HelperText = helperText;
         }
