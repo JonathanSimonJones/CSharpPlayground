@@ -1,15 +1,18 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Base;
 using Exception = System.Exception;
 
 // Helpful docs: https://michielvoo.net/2009/03/26/expressions-vs-statements-in-c-sharp/
 //               https://stackoverflow.com/questions/19132/expression-versus-statement
+//               https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/statements-expressions-operators/statements
 
 
 namespace DemoConsoleHelper_DotNET_4_7_1.Examples.StatementsExpressionsOperators
@@ -35,6 +38,7 @@ Statements
 A unit of code. Can be a block or a single line of code. 
 
 Only assignment, call, increment and decrement expressions may be used as statements. 
+https://stackoverflow.com/a/20771/8554766
 
 Common actions include: declaring variables, assigning values, calling methods, looping 
 through collections, branching to one or another block of code depending on a given 
@@ -72,6 +76,34 @@ Enables graceful recovery from expeceptional conditions that occur at run time.
 
 Checked and unchecked statments. These specify if exceptions should be thrown if an 
 overflow is caused when doing arithmetic. 
+
+Await statements are used in functions which include the async modifier. When an await 
+expression is met control returns to the caller of the async function and the method can 
+carry on with processing the rest of the statements. The progress in the async function
+is halted until the awaited task is complete. 
+
+Yield return statements are used with iterators to return each of the individual elements 
+of a collection. Once a yield return statement is reached, the current location in the 
+iterator function is remembered, and once re-entry of the iterator function happens the 
+execution of the function carries on from the last return yeild statement.
+
+Fixed statements are used in unsafe functions. They allow the use of pointers. The 
+fixed statement prevents the garbage collector from relocation a movable variable. 
+
+Lock statements enable you to limit access to blocks of code to only one thread at a 
+time. 
+
+Labeled statements. When a label statement is specified, you can use goto followed by the 
+name of the label statement to jump to that particular point in the code. 
+
+Statement keywords:
+Selection statements	        if, else, switch, case
+Iteration statements	        do, for, foreach, in, while
+Jump statements	                break, continue, default, goto, return, yield
+Exception handling statements	throw, try-catch, try-finally, try-catch-finally
+Checked and unchecked	        checked, unchecked
+fixed statement	                fixed
+lock statement	                lock
 ";
             HelperText = helperText;
         }
@@ -198,6 +230,14 @@ overflow is caused when doing arithmetic.
             {
                 ConsoleTextBuilder.AppendLine(str);
             }
+
+            //_FixedExample();
+
+            _LockExample();
+
+            _LabeledStatements();
+
+            ConsoleTextBuilder.AppendLine("End of statement examples!");
         }
 
         /// <summary>
@@ -333,7 +373,58 @@ overflow is caused when doing arithmetic.
             yield return "Last yeild returned.";
         }
 
+        // To use this method make sure to compile with unsafe option
+        //unsafe private void _FixedExample()
+        //{
+        //    int[] localFunctionIntArray = {0, 1, 2, 3};
 
+        //    // Fixed statement
+        //    fixed (int* intArrayPtr = localFunctionIntArray)
+        //    {
+        //        ConsoleTextBuilder.AppendLine("Value of second element in int array: " +
+        //                                      (*(intArrayPtr + 1)).ToString());
+        //    }
+        //}
+
+        private object ExLock => m_lock ?? (m_lock = new object());
+
+        private void _LockExample()
+        {
+            // Lock statment
+            lock (ExLock)
+            {
+                ConsoleTextBuilder.AppendLine("This is written inside a block statement " +
+                                              "which is prefixed by a lock statement.");
+            }
+        }
+
+        private void _LabeledStatements()
+        {
+            int startVal = 2;
+            switch (startVal)
+            {
+                // A labeled statement
+                case 0:
+                    return;
+
+                // A labeled statement
+                case 1:
+                    ConsoleTextBuilder.AppendLine("Hit case 1, now to case 0");
+                    goto case 0;
+
+                // A labeled statement
+                case 2:
+                    ConsoleTextBuilder.AppendLine("Entered switch example, heading to " +
+                                                  "case 1 next.");
+                    goto case 1;
+                default:
+                    goto exit;
+            }
+
+            // Also a labelled statment
+            exit:
+                return;
+        }
 
         // PRIVATE INTERFACE END
 
@@ -344,6 +435,7 @@ overflow is caused when doing arithmetic.
 
         private string m_helperText;
         private StringBuilder m_consoleTextBuilder = new StringBuilder();
+        private object m_lock;
 
         // MEMBER VARIABLES END
 
