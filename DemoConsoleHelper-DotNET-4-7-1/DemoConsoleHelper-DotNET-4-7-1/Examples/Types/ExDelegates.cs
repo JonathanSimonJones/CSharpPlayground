@@ -98,6 +98,9 @@ or asynchronously by using .BeginInvoke and .EndInvoke methods.
 Comparing delegates of different types assigned at compile time results in a compliation
 error. If the delegate instances are statically of the type System.Delegate, then the
 comparision is allowed, but will return false at run time. 
+
+Assigning a delegate creates a new copy of the delegate, or at appears to according to 
+assigning it to a property. It does not reference the original. See _DelegateAsProperty().
 ";
             HelperText = helperText;
         }
@@ -166,14 +169,6 @@ comparision is allowed, but will return false at run time.
             ConsoleTextBuilder.AppendLine(" ");
             _DelegateAsProperty();
 
-
-        //private RHS NonStaticRHS1 = (text) => text;
-        //private RHS NonStaticRHS2 = (text1) => text1;
-        //private static RHS StaticRHS1 = (text2) => text2;
-        //private static RHS StaticRHS2 = (text4) => text4;
-
-        //private LHS NonStaticLHS1 = (text3) => text3;
-        //private static LHS StaticLHS = (text5) => text5;
             _ComparisionOfDelegates(NonStaticRHS1, StaticRHS1, NonStaticLHS1, StaticLHS);
         }
 
@@ -389,6 +384,23 @@ comparision is allowed, but will return false at run time.
             ConsoleTextBuilder.AppendLine("Result of ProcessTwoIntsDelegateProperty " +
                                           "passing in 3 and 4: " +
                                           ProcessTwoIntsDelegateProperty(3, 4));
+
+            // Testing reassigning a delegate
+            multipleTwoIntsDelegate = delegate(int c, int d) { return c + d; };
+
+            ConsoleTextBuilder.AppendLine("Result of ProcessTwoIntsDelegateProperty " +
+                                          "passing in 3 and 4 after reassigning the " +
+                                          "original delegate which set the property " +
+                                          "with values 3 and 4: " +
+                                          ProcessTwoIntsDelegateProperty(3, 4));
+
+            ProcessTwoIntsDelegateProperty = multipleTwoIntsDelegate;
+
+            ConsoleTextBuilder.AppendLine("Result of ProcessTwoIntsDelegateProperty " +
+                                          "passing in 3 and 4 after reassigning the " +
+                                          "property with the new changed delegate " +
+                                          "with values 3 and 4: " +
+                                          ProcessTwoIntsDelegateProperty(3, 4));
         }
 
 
@@ -475,6 +487,13 @@ comparision is allowed, but will return false at run time.
             ConsoleTextBuilder.AppendLine("Non static compared with static " +
                                           "System.Delegate of differnt type result: " +
                                           (NonStaticRHS1 == staticLHSDel).ToString());
+
+            ConsoleTextBuilder.AppendLine("Non Static compared with non static " +
+                                          "System.Delegate with same delegate type " +
+                                          "and is a different delegatem, and original " +
+                                          " delegate is cast to System.Delegate result: " +
+                                          ((System.Delegate)NonStaticLHS1 == nonStaticRHSDel)
+                                          .ToString());
 
             ConsoleTextBuilder.AppendLine("Non Static compared with non static " +
                                           "System.Delegate with same delegate type " +
