@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Base;
+using Exception = System.Exception;
 
 // Helpful docs: https://michielvoo.net/2009/03/26/expressions-vs-statements-in-c-sharp/
 //               https://stackoverflow.com/questions/19132/expression-versus-statement
@@ -48,7 +49,7 @@ A statement block is enclosed in {} brackets.
 
 Declaration statements introduces a new variable or constant. 
 
-Expression statements that calculate a value must store a value. 
+Expression statements that calculate a value must store a value in a variable. 
 Expression statements include:  assignment, object creation with assignment, method 
 invocation. 
 
@@ -68,6 +69,9 @@ control to another section of code.
 
 Exception handling statements include: throw, try-catch, try-finally, try-catch-finally.
 Enables graceful recovery from expeceptional conditions that occur at run time. 
+
+Checked and unchecked statments. These specify if exceptions should be thrown if an 
+overflow is caused when doing arithmetic. 
 ";
             HelperText = helperText;
         }
@@ -174,7 +178,26 @@ Enables graceful recovery from expeceptional conditions that occur at run time.
                     break;
             }
 
+            // Examples of Exception statements
             _TryCatchFinally();
+
+            // Examples of checked and unchecked statements
+            _CheckedAndUnchecked();
+
+            // Async example to demonstrate await statements
+            _AwaitStatementExample();
+
+            ConsoleTextBuilder.AppendLine("This should be before the async methods as " +
+                                          "program flow should continue");
+
+            // Holding thread so that the tasks completes
+            System.Threading.Thread.Sleep(5000);
+
+            // Demonstrates yeild return statement
+            foreach (string str in _YeildReturnExample())
+            {
+                ConsoleTextBuilder.AppendLine(str);
+            }
         }
 
         /// <summary>
@@ -199,24 +222,118 @@ Enables graceful recovery from expeceptional conditions that occur at run time.
             return;
         }
 
-        private int _TryCatchFinally()
+        private void _TryCatchFinally()
         {
+            // Set random char buffer so that we can try go out of bounds
             char[] buffer = new char[20];
+
+            // Exception statment
             try
             {
+                // Go beyond bounds
                 buffer[30] = '5';
             }
-            catch
+            // Exception statement
+            catch(Exception exception)
             {
-                ConsoleTextBuilder.AppendLine("Caught excepetion");
+                ConsoleTextBuilder.AppendLine("Caught excepetion: " + exception.ToString());
             }
+            // Exception statement
             finally
             {
+                ConsoleTextBuilder.AppendLine("Setting buffer to null in finally");
                 buffer = null;
             }
-
-            return 0;
         }
+
+        private void _CheckedAndUnchecked()
+        {
+            Int32 lowestNegative = Int32.MinValue;
+
+            ConsoleTextBuilder.AppendLine("Lowest negative value for int32 = " 
+                                          + lowestNegative.ToString());
+
+            ConsoleTextBuilder.AppendLine("With checked block in try");
+            try
+            {
+                // Checked statement
+                checked
+                {
+                    lowestNegative -= 1;
+                }
+            }
+            catch (Exception e)
+            {
+                ConsoleTextBuilder.AppendLine("Caught exception: " + e);
+            }
+
+            // Reset value for test
+            lowestNegative = Int32.MinValue;
+
+            ConsoleTextBuilder.AppendLine("Without checked block in try");
+            try
+            {
+                lowestNegative -= 1;
+            }
+            catch (Exception e)
+            {
+                ConsoleTextBuilder.AppendLine("Caught exception: " + e);
+            }
+
+            // Reset value for test
+            lowestNegative = Int32.MinValue;
+
+            ConsoleTextBuilder.AppendLine("Explicity using unchecked block in try");
+            try
+            {
+                // Unchecked statement
+                unchecked
+                {
+                    lowestNegative -= 1;
+                }
+            }
+            catch (Exception e)
+            {
+                ConsoleTextBuilder.AppendLine("Caught exception: " + e);
+            }
+
+
+            ConsoleTextBuilder.AppendLine("new value after minus 1 = " 
+                                          + lowestNegative.ToString());
+        }
+
+        private async void _AwaitStatementExample()
+        {
+            // Await statement
+            await _WriteToConsoleTextBuilderAfter3Seconds();
+
+            ConsoleTextBuilder.AppendLine("This is called after " +
+                                          "_WriteToConsoleTextBuilderAfter3Seconds");
+        }
+
+        private async Task _WriteToConsoleTextBuilderAfter3Seconds()
+        {
+            // Await statement
+            await Task.Delay(3000);
+
+            ConsoleTextBuilder.AppendLine("This should be written 3 seconds after " +
+                                          "execution of " +
+                                          "_WriteToConsoleTextBuilderAfter3Seconds");
+        }
+
+        private IEnumerable<string> _YeildReturnExample()
+        {
+            // Yield return statement
+            yield return "First yeild returned.";
+
+            // Yield return statement
+            yield return "Second yeild returned.";
+
+            // Yield return statement
+            yield return "Last yeild returned.";
+        }
+
+
 
         // PRIVATE INTERFACE END
 

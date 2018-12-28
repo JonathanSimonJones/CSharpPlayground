@@ -8,4 +8,25 @@ is loose coupling more important than enforcement of interface?
 Statements/Expressions/Operators
 	An anonymous function is an 'inline' statement or expression that can be used wherever
 	a delegate type is expected. You can use it to initialise a named delegate or pass
-	it instead of a named delegate type as a method parameter. 
+	it instead of a named delegate type as a method parameter.
+	
+Methods
+	In a method, parameters are types and names given in the definition of the method 
+	signature.
+	Arguments are the values passed into the method once it is invoked. 
+	Value types are passed by value in arguments.
+	Reference types pass a reference to the object in arguments. e.g The location of the
+	object. 
+	"C# passes all reference types by value ... " https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/methods accessed on 2018-12-28
+	If a method returns void or is an async method, then the body of the method must be a 
+	statement expression. A statement expression is a statement which includes a expression
+	and stores the calculated value in a variable. 
+
+
+Strings
+	Use @ for literals
+	Use stringbuilder if a string is likely to change. Use string for constant strings.
+
+C# 7.0 
+	return by reference
+	using types in switches

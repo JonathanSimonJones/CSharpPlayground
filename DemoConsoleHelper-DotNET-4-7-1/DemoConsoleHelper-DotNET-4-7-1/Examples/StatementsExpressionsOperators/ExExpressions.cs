@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Base;
 
+// Helpful docs: https://michielvoo.net/2009/03/26/expressions-vs-statements-in-c-sharp/
+//               https://stackoverflow.com/questions/19132/expression-versus-statement
 
 namespace DemoConsoleHelper_DotNET_4_7_1.Examples.StatementsExpressionsOperators
 {
