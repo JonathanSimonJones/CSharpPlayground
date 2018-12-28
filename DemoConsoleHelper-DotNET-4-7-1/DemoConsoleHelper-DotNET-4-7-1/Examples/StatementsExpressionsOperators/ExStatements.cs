@@ -257,11 +257,17 @@ lock statement	                lock
 
         // PRIVATE INTERFACE START
 
+        /// <summary>
+        /// Example of a method 
+        /// </summary>
         private void _MethodStatement()
         {
             return;
         }
 
+        /// <summary>
+        /// Demonstration of exception statements
+        /// </summary>
         private void _TryCatchFinally()
         {
             // Set random char buffer so that we can try go out of bounds
@@ -286,6 +292,12 @@ lock statement	                lock
             }
         }
 
+        /// <summary>
+        /// Demonstration of unchecked and check statements
+        /// </summary>
+        /// <remarks>
+        /// Uses exception handling for tests
+        /// </remarks>
         private void _CheckedAndUnchecked()
         {
             Int32 lowestNegative = Int32.MinValue;
@@ -342,6 +354,13 @@ lock statement	                lock
                                           + lowestNegative.ToString());
         }
 
+        /// <summary>
+        /// Demos await statement
+        /// </summary>
+        /// <remarks>
+        /// Use <c cref="_WriteToConsoleTextBuilderAfter3Seconds()">
+        /// _WriteToConsoleTextBuilderAfter3Seconds()</c> to help
+        /// </remarks>
         private async void _AwaitStatementExample()
         {
             // Await statement
@@ -351,6 +370,12 @@ lock statement	                lock
                                           "_WriteToConsoleTextBuilderAfter3Seconds");
         }
 
+        /// <summary>
+        /// Waits three seconds then writes to console
+        /// </summary>
+        /// <remarks>
+        /// Shows use of await statement
+        /// </remarks>
         private async Task _WriteToConsoleTextBuilderAfter3Seconds()
         {
             // Await statement
@@ -361,6 +386,12 @@ lock statement	                lock
                                           "_WriteToConsoleTextBuilderAfter3Seconds");
         }
 
+        /// <summary>
+        /// Demos yield return statement
+        /// </summary>
+        /// <remarks>
+        /// Is called in a foreach loop
+        /// </remarks>
         private IEnumerable<string> _YeildReturnExample()
         {
             // Yield return statement
@@ -388,6 +419,12 @@ lock statement	                lock
 
         private object ExLock => m_lock ?? (m_lock = new object());
 
+        /// <summary>
+        /// Demos lock statement
+        /// </summary>
+        /// <remarks>
+        /// Doesn't really demo lock well, but still a example of the statement use
+        /// </remarks>
         private void _LockExample()
         {
             // Lock statment
@@ -398,6 +435,14 @@ lock statement	                lock
             }
         }
 
+        /// <summary>
+        /// Demos jumping to a labeled statement using goto
+        /// </summary>
+        /// <remarks>
+        /// Includes both a switch goto and a non based switch labeled statement. 
+        /// It should never hit exit as it is currently designed. exit is put in for
+        /// demo purposes.
+        /// </remarks>
         private void _LabeledStatements()
         {
             int startVal = 2;
