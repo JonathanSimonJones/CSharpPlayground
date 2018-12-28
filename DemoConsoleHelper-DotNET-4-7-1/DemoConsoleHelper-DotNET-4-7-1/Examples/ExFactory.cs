@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Base;
+using DemoConsoleHelper_DotNET_4_7_1.Examples.StatementsExpressionsOperators;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Types;
 
 
@@ -45,7 +46,7 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
         /// <returns>
         /// A example of type ExDynamic. 
         /// </returns>
-        public ExDynamic ExDynamic() => new ExDynamic();
+        public ExDynamic ExDynamic() => m_exDynamic ?? (m_exDynamic = new ExDynamic());
 
         /// <summary>
         /// Return a new Delegates example.
@@ -53,7 +54,18 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
         /// <returns>
         /// A example of type ExDelegates. 
         /// </returns>
-        public ExDelegates ExDelegates() => new ExDelegates();
+        public ExDelegates ExDelegates() => m_exDelegates ?? (m_exDelegates = new ExDelegates());
 
+        /// <summary>
+        /// Return a new Statements example.
+        /// </summary>
+        /// <returns>
+        /// A example of statments. 
+        /// </returns>
+        public ExStatements ExStatements() => m_exStatements ?? (m_exStatements = new ExStatements());
+
+        private ExDynamic       m_exDynamic;
+        private ExDelegates     m_exDelegates;
+        private ExStatements    m_exStatements;
     }
 }

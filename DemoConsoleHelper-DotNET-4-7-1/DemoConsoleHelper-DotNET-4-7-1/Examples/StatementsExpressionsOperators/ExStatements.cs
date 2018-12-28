@@ -7,6 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Base;
 
+// Helpful docs: https://michielvoo.net/2009/03/26/expressions-vs-statements-in-c-sharp/
+//               https://stackoverflow.com/questions/19132/expression-versus-statement
+
 
 namespace DemoConsoleHelper_DotNET_4_7_1.Examples.StatementsExpressionsOperators
 {
@@ -59,6 +62,12 @@ program control to be transferred to a specfic flow based of a condition.
 Iteration statement include: do, for, foreach, in, while. These statements allow you to 
 loop through collections (like arrays) or perform the same set of statemtents 
 repeatedly until a specific condition is met. 
+
+Jump statements include: break, continue, default, goto, return, yield. They transfer 
+control to another section of code. 
+
+Exception handling statements include: throw, try-catch, try-finally, try-catch-finally.
+Enables graceful recovery from expeceptional conditions that occur at run time. 
 ";
             HelperText = helperText;
         }
@@ -112,7 +121,7 @@ repeatedly until a specific condition is met.
             position = 10.0f;
 
             // Method statement (expression statment)
-            MethodStatement();
+            _MethodStatement();
 
             // Declaration statement with initilizer are equivalent to 
             // declaration statement following by assignment statement
@@ -137,9 +146,35 @@ repeatedly until a specific condition is met.
             // Example of empty statement
             // while statement (iteration statement)
             while (positions[0] > 100.0f)
-                ;   
+                ;
 
+            // Selection statement
+            switch (positions[0])
+            {
+                // Selection statement
+                case 2.2f:
+                    ConsoleTextBuilder.AppendLine("Hit else statement block.");
 
+                    // Jump statement
+                    break;
+
+                // Selection statement
+                case 1.3f:
+                    ConsoleTextBuilder.AppendLine("Hit if statement block.");
+
+                    // Jump statement
+                    break;
+
+                // Jump statement
+                default:
+                    ConsoleTextBuilder.AppendLine("Did not execute either the if or else " +
+                                                  "statement block.");
+
+                    // Jump statement
+                    break;
+            }
+
+            _TryCatchFinally();
         }
 
         /// <summary>
@@ -159,9 +194,28 @@ repeatedly until a specific condition is met.
 
         // PRIVATE INTERFACE START
 
-        private void MethodStatement()
+        private void _MethodStatement()
         {
             return;
+        }
+
+        private int _TryCatchFinally()
+        {
+            char[] buffer = new char[20];
+            try
+            {
+                buffer[30] = '5';
+            }
+            catch
+            {
+                ConsoleTextBuilder.AppendLine("Caught excepetion");
+            }
+            finally
+            {
+                buffer = null;
+            }
+
+            return 0;
         }
 
         // PRIVATE INTERFACE END
