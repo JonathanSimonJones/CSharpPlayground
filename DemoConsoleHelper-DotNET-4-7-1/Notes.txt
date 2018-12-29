@@ -30,3 +30,12 @@ Strings
 C# 7.0 
 	return by reference
 	using types in switches
+
+Enums
+	The default behavior of the ToString method for an enumeration value is to return the 
+	string representation of the value.
+
+Null
+	The null keyword is a literal that represents a null reference, one that does not refer 
+	to any object. null is the feault value of reference-type variable. Ordinary types 
+	cannot be null. However C# 2.0 introduced nullable value types. 
