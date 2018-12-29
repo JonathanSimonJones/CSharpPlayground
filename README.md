@@ -21,3 +21,4 @@ Please see Example/Interfaces for best practice on splitting interfaces based up
 Please see Example/ExFactory for demonstration of the factory design pattern.  
 Please see Example/ExFactory for demonstration of the singleton design pattern.  
 Please see Example/Base/ExBase.cs for use of XML code notation.  
+Please see all examples for documenting code.  

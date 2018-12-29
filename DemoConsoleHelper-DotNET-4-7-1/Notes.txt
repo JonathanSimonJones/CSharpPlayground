@@ -26,6 +26,8 @@ Methods
 Strings
 	Use @ for literals
 	Use stringbuilder if a string is likely to change. Use string for constant strings.
+	Use escape sequence \u for fully qualified unicode e.g. \u0041 == "A"
+	Or use \x for either fully qualified or not e.g \x41 and \x0041 both equal "A"
 
 C# 7.0 
 	return by reference

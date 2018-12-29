@@ -159,7 +159,7 @@ changing of individual characters.
         {
             _InitialiseStringExamples();
 
-            _CopyingAStringExample();
+            _ConcatenatingAStringExample();
 
             _AssigningAStringExample();
 
@@ -201,6 +201,20 @@ changing of individual characters.
 
         // PRIVATE INTERFACE START
 
+        /// <summary>
+        /// Demo initialisation of strings.
+        /// </summary>
+        /// <remarks>
+        /// Use System.String.Empty to initialise empty strings, not null.
+        /// Use verbatim strings to prevent escaping of characters.
+        /// Use "" (two double quotes) to get a individual double quote in verbatim
+        /// strings.
+        /// Use const to prevent a variable being set another string.
+        /// Use a string constructor only when creating a string from:
+        ///     char*
+        ///     char[]
+        ///     sbyte*
+        /// </remarks>
         private void _InitialiseStringExamples()
         {
             // Declare without initializing.
@@ -237,7 +251,13 @@ changing of individual characters.
             string alphabet = new string(letters);
         }
 
-        private void _CopyingAStringExample()
+        /// <summary>
+        /// Demo concatienating a string.
+        /// </summary>
+        /// <remarks>
+        /// You use the + operator.
+        /// </remarks>
+        private void _ConcatenatingAStringExample()
         {
             // Copying a string actually creates a reference to the string object
             string s1 = "A string is more ";
@@ -252,6 +272,13 @@ changing of individual characters.
                                           " sum of its chars\": " + s1);
         }
 
+        /// <summary>
+        /// Demo copying a string.
+        /// </summary>
+        /// <remarks>
+        /// Shows that a string is a reference to an object.
+        /// By setting a string you set it a new reference.
+        /// </remarks>
         private void _AssigningAStringExample()
         {
             string s1 = "Hello ";
@@ -264,6 +291,13 @@ changing of individual characters.
             // s2 now has a reference to "Hello"
         }
 
+        /// <summary>
+        /// Demo using escape characters.
+        /// </summary>
+        /// <remarks>
+        /// Use \x or \u with code point values to use unicode characters.
+        /// See link for more: https://bit.ly/2TfveTV .
+        /// </remarks>
         private void _EscapeCharacterExamples()
         {
             string columns = "Column 1\tColumn 2\tColumn 3";
@@ -278,8 +312,21 @@ changing of individual characters.
 
             string title = "\"The \u00C6olean Harp\", by Samuel Taylor Coleridge";
             //Output: "The Æolean Harp", by Samuel Taylor Coleridge
+
+            string unicodeEscapeSequenceWithVariableLength = "\x41 <- This should be A";
+            // Fully qualified looks like \x0041
+
+            ConsoleTextBuilder.AppendLine(unicodeEscapeSequenceWithVariableLength);
         }
 
+        /// <summary>
+        /// Demo for verbatim strings.
+        /// </summary>
+        /// <remarks>
+        /// Verbatim strings process escaped characters
+        /// To escape double quotations use two double quotations
+        /// Retains text formatting from source.
+        /// </remarks>
         private void _VerbatimStringExamples()
         {
             string filePath = @"C:\Users\scoleridge\Documents\";
@@ -296,8 +343,20 @@ changing of individual characters.
 
             string quote = @"Her name was ""Sara.""";
             // Output: Her name was "Sara."
+
+            string someTextWithEscapeUnicodeInAVerbatimString =
+                @"\x45 , can't escape in a verbatim string";
+
+            ConsoleTextBuilder.AppendLine(someTextWithEscapeUnicodeInAVerbatimString);
         }
 
+        /// <summary>
+        /// Demo for string interpolation.
+        /// </summary>
+        /// <remarks>
+        /// Use $ at the start of a string with values in {} to evaluate the value and
+        /// include it within the string.
+        /// </remarks>
         private void _StringInterpolationExample()
         {
             int number = 3;
@@ -306,6 +365,14 @@ changing of individual characters.
                                           $"included via string interpolation!");
         }
 
+        /// <summary>
+        /// Demo for composite formatting.
+        /// </summary>
+        /// <remarks>
+        /// Using String.Format you can evaluate include values within strings.
+        /// Inside the string include braces {} with an arguement number which is
+        /// the number of the arguement (starting at 0) following the string.
+        /// </remarks>
         private void _CompositeFormattingExample()
         {
             decimal number = 5.2M;
@@ -316,6 +383,12 @@ changing of individual characters.
             ConsoleTextBuilder.AppendLine(forConsoleTextBuilder);
         }
 
+        /// <summary>
+        /// Demo for substring.
+        /// </summary>
+        /// <remarks>
+        /// Use String.SubString(start index, number of char) to get part of a string.
+        /// </remarks>
         private void _SubStringsExample()
         {
             string someString = "Just some chars in some string";
@@ -324,6 +397,13 @@ changing of individual characters.
             ConsoleTextBuilder.AppendLine("The content of the substring: " + subString);
         }
 
+        /// <summary>
+        /// Demo for replace.
+        /// </summary>
+        /// <remarks>
+        /// Use String.Replace(search value, replace value) to replace part of string 
+        /// which is specified with a new string value.
+        /// </remarks>
         private void _ReplaceExample()
         {
             string foo = "foo";
@@ -333,6 +413,12 @@ changing of individual characters.
                                           + replaceFooWithBar);
         }
 
+        /// <summary>
+        /// Demo for IndexOf.
+        /// </summary>
+        /// <remarks>
+        /// Use String.IndexOf(searchable char value) to find the index of that char.
+        /// </remarks>
         private void _IndexOfExample()
         {
             string strToSearch = "find and the letter z in this string z   z z     z";
@@ -342,6 +428,12 @@ changing of individual characters.
                                           + indexOfZinStr.ToString());
         }
 
+        /// <summary>
+        /// Demo for accessing an individual char.
+        /// </summary>
+        /// <remarks>
+        /// You use the array operator [].
+        /// </remarks>
         private void _AccessIndividualChar()
         {
             string word = "zebra";
@@ -350,6 +442,16 @@ changing of individual characters.
             ConsoleTextBuilder.AppendLine($"The letter is: {letter}");
         }
 
+        /// <summary>
+        /// Demo for using a string with a null reference.
+        /// </summary>
+        /// <remarks>
+        /// You can concatenate a value string with a null string without a problem.
+        /// You can compare a null and value string without a problem.
+        /// An empty string will return a length of null.
+        /// You cannot obtain a null strings length.
+        /// You can include a null character within a string.
+        /// </remarks>
         private void _NullStringExamples()
         {
             // You can concatinate null strings with empty or filled strings without
@@ -423,6 +525,14 @@ changing of individual characters.
 
         }
 
+        /// <summary>
+        /// Demo for using a string builder.
+        /// </summary>
+        /// <remarks>
+        /// Use a StringBuilder if you are doing many manipulations on a string.
+        /// You can copy and assign individual elements of StringBuilder object but
+        /// you cannot do this with a string. 
+        /// </remarks>
         private void _StringBuilderExample()
         {
             StringBuilder sb = new StringBuilder();
