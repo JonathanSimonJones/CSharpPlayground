@@ -54,7 +54,8 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
         /// <returns>
         /// A example of type ExDelegates. 
         /// </returns>
-        public ExDelegates ExDelegates() => m_exDelegates ?? (m_exDelegates = new ExDelegates());
+        public ExDelegates ExDelegates() => 
+            m_exDelegates ?? (m_exDelegates = new ExDelegates());
 
         /// <summary>
         /// Return a new Statements example.
@@ -62,10 +63,21 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
         /// <returns>
         /// A example of statments. 
         /// </returns>
-        public ExStatements ExStatements() => m_exStatements ?? (m_exStatements = new ExStatements());
+        public ExStatements ExStatements() => 
+            m_exStatements ?? (m_exStatements = new ExStatements());
+
+        /// <summary>
+        /// Return a new String Type example.
+        /// </summary>
+        /// <returns>
+        /// A example of how to use string objects.
+        /// </returns>
+        public ExStringType ExStringType() =>
+            m_exStringType ?? (m_exStringType = new ExStringType());
 
         private ExDynamic       m_exDynamic;
         private ExDelegates     m_exDelegates;
         private ExStatements    m_exStatements;
+        private ExStringType    m_exStringType;
     }
 }
