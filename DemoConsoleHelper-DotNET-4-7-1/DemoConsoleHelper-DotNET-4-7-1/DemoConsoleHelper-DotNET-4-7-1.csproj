@@ -71,6 +71,7 @@
     <Compile Include="Examples\ExTemplate.cs" />
     <Compile Include="Examples\StatementsExpressionsOperators\ExExpressions.cs" />
     <Compile Include="Examples\StatementsExpressionsOperators\ExStatements.cs" />
+    <Compile Include="Examples\SystemObjects\ExStringObject.cs" />
     <Compile Include="Examples\Types\ExDelegates.cs" />
     <Compile Include="Examples\Types\ExDynamic.cs" />
     <Compile Include="Examples\Interfaces\IHelperText.cs" />

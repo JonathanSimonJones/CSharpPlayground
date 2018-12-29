@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Base;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.StatementsExpressionsOperators;
+using DemoConsoleHelper_DotNET_4_7_1.Examples.SystemObjects;
 using DemoConsoleHelper_DotNET_4_7_1.Examples.Types;
 
 
@@ -22,9 +23,7 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
     /// </remarks>
     public sealed class ExFactory
     {
-        // Pass in a delegate to the constructor which calls the Singleton constructor
-        private static readonly Lazy<ExFactory> lazy =
-            new Lazy<ExFactory>(() => new ExFactory());
+        // PUBLIC INTERFACE START
 
         /// <summary>
         /// Return the sole static instance of the class.
@@ -33,12 +32,6 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
         {
             get { return lazy.Value; }
         }
-
-        // Define private constructor to stop multiple copies being created
-        private ExFactory()
-        {
-        }
-
 
         /// <summary>
         /// Return a new Dynamic example.
@@ -75,9 +68,45 @@ namespace DemoConsoleHelper_DotNET_4_7_1.Examples
         public ExStringType ExStringType() =>
             m_exStringType ?? (m_exStringType = new ExStringType());
 
+        /// <summary>
+        /// Return a new String Type example.
+        /// </summary>
+        /// <returns>
+        /// A example of how to use string objects.
+        /// </returns>
+        public ExStringObject ExStringObject() =>
+            m_exStringObject ?? (m_exStringObject = new ExStringObject());
+
+        // PUBLIC INTERFACE END
+
+
+
+        // PRIVATE INTERFACE START
+
+        // Pass in a delegate to the constructor which calls the Singleton constructor
+        private static readonly Lazy<ExFactory> lazy =
+            new Lazy<ExFactory>(() => new ExFactory());
+
+
+
+        // Define private constructor to stop multiple copies being created
+        private ExFactory()
+        {
+        }
+
+        // PRIVATE INTERFACE END
+
+
+
+
+        // PRIVATE MEMBER VARIABLES START
+
         private ExDynamic       m_exDynamic;
         private ExDelegates     m_exDelegates;
         private ExStatements    m_exStatements;
         private ExStringType    m_exStringType;
+        private ExStringObject  m_exStringObject;
+
+        // PRIVATE MEMBER VARIABLES END
     }
 }

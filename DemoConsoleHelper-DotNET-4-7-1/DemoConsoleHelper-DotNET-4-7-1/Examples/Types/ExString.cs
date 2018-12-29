@@ -9,7 +9,7 @@ using DemoConsoleHelper_DotNET_4_7_1.Examples.Base;
 namespace DemoConsoleHelper_DotNET_4_7_1.Examples.Types
 {
     /// <summary>
-    /// SOLELY USED AS A TEMPLATE, NOT INTENDED AS AN EXAMPLE
+    /// Examples of functionality of string as a type
     /// </summary>
     public sealed class ExStringType : ExBase
     {
@@ -51,6 +51,10 @@ String literals can contain any character literal. Escape sequences are included
 If a string is preceeded by the @ symbol, the string is known as a verbatim string. 
 Escape sequences are not processed in vertabim strings. They start is with an @ 
 symbol and are enclosed by double quotations """".
+
+string is an alias for System.String. 
+
+System.String provides methods for safely creating, manipulating and comparing strings. 
 ";
             HelperText = helperText;
         }
