@@ -41,3 +41,9 @@ Null
 	The null keyword is a literal that represents a null reference, one that does not refer 
 	to any object. null is the feault value of reference-type variable. Ordinary types 
 	cannot be null. However C# 2.0 introduced nullable value types. 
+
+@ 
+	Can be used to enable C# keywords to be used as identifiers
+		int @for = 2;
+		Console.Write(@for);
+	To indicate a string literal should be intepreted verbatim. 
