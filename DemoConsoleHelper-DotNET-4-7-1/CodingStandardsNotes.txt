@@ -1,7 +1,7 @@
 CodingStandardsNotes.txt
-2018-12-18
+2018-12-31
 
-Taken from: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions on 17 Dec 2018
+Taken from on 2018-12-18: https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/inside-a-program/coding-conventions on 17 Dec 2018
 Handy doc: https://github.com/ktaranov/naming-convention/blob/master/C%23%20Coding%20Standards%20and%20Naming%20Conventions.md
 
 Thoughts: Some of these are not given any justification, and seem more best practice than 
@@ -18,7 +18,7 @@ Commenting Conventions
 	Place comment on seperate line
 	Begin comment with uppercase letter.
 	End comment with period
-	Have one space with comment delimiter and comment text
+	Have one space between comment delimiter and comment text
 	Do not use formatted blocks of asterisks around comments
 
 Language Guidelines
@@ -116,6 +116,9 @@ Language Guidelines
 			// first expression is false. That is, it does not evaluate the
 			// second expression. The & operator evaluates both, and causes 
 			// a run-time error when divisor is 0.
+			// Basically if you use && and the first clauses evaluates to false
+			// the second is ignored. But if you use & then both clauses will be 
+			// evaluated. 
 			if ((divisor != 0) && (dividend / divisor > 0))
 			{
 				Console.WriteLine("Quotient: {0}", dividend / divisor);
@@ -165,7 +168,7 @@ Language Guidelines
 
 		Static members
 			Call static members by using ClassName.StaticMember. Makes code more readable
-			as the static access is clear. No not qualify a static member defined in a base 
+			as the static access is clear. Do not qualify a static member defined in a base 
 			class with the name of a derived class as the code may compile with the derived
 			class qualifer but if you add a static member with the same name to the derived 
 			class the code may break. 
@@ -210,3 +213,7 @@ Language Guidelines
 								 from score in student.Scores
 								 where score > 90
 								 select new { Last = student.LastName, score };
+
+		Attributes
+			Qualify attribute class with suffix Attribute to the name of the class.
+				public class FooAttribute: Attribute {}

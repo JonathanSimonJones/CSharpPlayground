@@ -47,3 +47,4 @@ Null
 		int @for = 2;
 		Console.Write(@for);
 	To indicate a string literal should be intepreted verbatim. 
+	To distinguish between attributes in case of a naming conflict.

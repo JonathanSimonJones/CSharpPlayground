@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Examples\Base\ExBase.cs" />
     <Compile Include="Examples\ExFactory.cs" />
+    <Compile Include="Examples\SpecialCharacters\ExAtCharacter.cs" />
     <Compile Include="Examples\StatementsExpressionsOperators\AnonymousFunctions\ExAnonymousFunctions.cs" />
     <Compile Include="Examples\ExTemplate.cs" />
     <Compile Include="Examples\StatementsExpressionsOperators\ExExpressions.cs" />
